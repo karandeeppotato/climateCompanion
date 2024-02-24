@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
       req.connection.remoteAddress ||
       req.socket.remoteAddress ||
       req.connection.socket.remoteAddress;
-    const location = geolocateUser(iphard);
+    const location = geolocateUser(ip);
     console.log(location.ll[0] + " " + location.ll[1]);
   } catch (error) {
     console.log(error.message);
