@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Companion</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <nav>
+        <div class="navbar-wrapper">
+            <div class="logo-wrapper">
+                <img src="./public/images/logo/logo-nobg.png">
+            </div>
+            
+            <div class="search-bar-container">
+                <!--search bar icon-->
+                <div class="search-icon">
+                    <img src="./public/images/" alt="Search-icon">
+                </div>
+                <!--search bar -->
+                <input type="text" class="search-input" placeholder="Enter City/Country Name...." onclick="toggleDropdown()">
+                <div class="dropdown" id="myDropdown">
+                    <a href="#" class="dropdown-item">Lourem</a>
+                    <a href="#" class="dropdown-item">Lourem</a>
+                    <a href="#" class="dropdown-item">Lourem</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+
+        <div class="body-wrapper">
+
+            <div class="temperature-wrapper">
+                <div class="temp-degree">
+
+                </div>
+
+                <div class="temp-usp">
+                    <div class="additional-info">
+                        <ul class="detail-list">
+
+                            <li class="info-1"></li>
+                            <li class="info-2"></li>
+                            <li class="info-3"></li>
+                            <li class="info-4"></li>
+                            <li class="info-5"></li>
+
+                        </ul>
+                        
+                    </div>
+                </div>
+
+            </div>
+    
+            <div class="time-line-wrapper">
+                <div class="time-line">
+
+                    <div class="timeline-samay">
+
+                    </div>
+
+                    <div class="timeline-icon">
+
+                    </div>
+
+                    <div class="timeline-temp">
+
+                    </div>    
+                </div>
+            </div>
+    
+            <section class="5day-climate-wrapper">
+                <!--card.ejs X 5 times for 5-day Forecast-->
+            </section>
+        </div>
+
+    </section>
+
+</body>
+</html>
