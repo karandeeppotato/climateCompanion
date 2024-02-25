@@ -10,21 +10,22 @@
     <nav>
         <div class="navbar-wrapper">
             <div class="logo-wrapper">
-                <img src="/images/logo/logo-nobg.png">
+                <img src="/images/logo/logo-nobg-cropped.png">
             </div>
             
             <div class="search-bar-container">
-                <!--search bar icon-->
-                <div class="search-icon">
-                    <img src="/images/weather_icons/clear_sky/clear_moon.gif" alt="Search-icon">
+                <div class="search-bar-wrapper">
+                    <!--search bar icon-->
+                    <i class="search-icon">🔍</i>
+                    <!--search bar -->
+                    <input type="text" class="search-input" placeholder="Enter City/Country Name...." onclick="toggleDropdown()">
+                    <div class="dropdown" id="myDropdown" style="display:none;">
+                        <a href="#" class="dropdown-item">Lourem</a>
+                        <a href="#" class="dropdown-item">Lourem</a>
+                        <a href="#" class="dropdown-item">Lourem</a>
+                    </div>  
                 </div>
-                <!--search bar -->
-                <input type="text" class="search-input" placeholder="Enter City/Country Name...." onclick="toggleDropdown()">
-                <div class="dropdown" id="myDropdown">
-                    <a href="#" class="dropdown-item">Lourem</a>
-                    <a href="#" class="dropdown-item">Lourem</a>
-                    <a href="#" class="dropdown-item">Lourem</a>
-                </div>
+
             </div>
         </div>
     </nav>
@@ -35,18 +36,23 @@
 
             <div class="temperature-wrapper">
                 <div class="temp-degree">
-
+                    <span id="temp-value">25°C</span>
+                    <div id="temp-icon">
+                        <!--yaha corressponding icon aaega temperature ke hisab se -->
+                        <!--link nhi kiya abhi just testing ke liye link daal rakha hai-->
+                        <img src="/images/weather_icons/clear_sky/clear_sun.gif" alt="animated image"/>
+                    </div>
                 </div>
 
                 <div class="temp-usp">
                     <div class="additional-info">
                         <ul class="detail-list">
-
-                            <li class="info-1"></li>
-                            <li class="info-2"></li>
-                            <li class="info-3"></li>
-                            <li class="info-4"></li>
-                            <li class="info-5"></li>
+                            <!--Yaha bhi info link karni hai-->
+                            <li class="info-1">Precipitation: 0%</li>
+                            <li class="info-2">Humidity: 32%</li>
+                            <li class="info-3">Wind: 10 km/h</li>
+                            <li class="info-4">Mostly Cloudy</li>
+                            <li class="info-5">Feels like:23°C</li>
 
                         </ul>
                         
