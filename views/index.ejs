@@ -62,13 +62,13 @@
                         <% for(index = 0; index < 8; index++) { %>
                             <div class="time-line">            
                                 <div class="timeline-time">
-                                    <%= time_tl[index].main.temp %>
+                                    <%= tl[index].main.temp %>
                                 </div>                            
                                 <div class="timeline-icon">
-                                    <%= weather_tl[index].weather[0].id %> 
+                                    <%= tl[index].weather[0].id %> 
                                 </div>                            
                                 <div class="timeline-temp">
-                                    <%= time_tl[index].dt_txt.slice(11, 16) %> 
+                                    <%= tl[index].dt_txt.slice(11, 16) %> 
                                 </div>                           
                             </div>
                         <% } %>
@@ -76,27 +76,28 @@
                 </div>               
                 <div class="glass-effect-container glass-effect">
                     <section class="5day-climate-wrapper">
-                    <% for(index=0; index < 5; index++) { %>
+                        <% tl.map((days, index) => { %>
+                            <% if(index % 8 === 0) { %>
                         <div class="forecast-card-wrapper">   
                             <div class="date"> 
-                                date of the day
+                                <%= days.dt_txt.slice(0, 11) %>
                             </div>                            
                             <div class="icon"> 
-                                corresponding icon related to weather type
+                                <%= days.weather[0].id %>
                             </div>                        
                             <div class="weather-desp">
-                                type of weather specified
+                                <%= days.weather[0].description %>
                             </div>                        
                             <div class="degree-wrapper">                           
                                 <div class="max-degree">
-                                    max temperature for the day
+                                    <%= days.main.temp_max %>
                                 </div>                        
                                 <div class="min-degree">
-                                    min temperature for the day
+                                    <%= days.main.temp_min %> 
                                 </div>
                             </div>
                         </div>
-                    <% } %>   
+                        <% }}); %>
                         <!--card.ejs X 5 times for 5-day Forecast-->
                     </section>
                 </div>

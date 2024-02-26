@@ -45,18 +45,8 @@ app.get("/weather", async (req, res) => {
       currentSunrise: currData.sys.sunrise,
       currentSunset: currData.sys.sunset,
 
-      // TIMELINE
-      time_tl: forecast.list,
-      weather_tl: forecast.list,
-      temp_tl: forecast.list,
-
-      // FORECAST DAYS
-      dayDate: forecast.list,
-      dayDescription: forecast.list,
-      dayDescriptionId: forecast.list,
-      dayMinTemp: forecast.list,
-      dayMaxTemp: forecast.list,
-
+      // TIMELINE AND FORECAST
+      tl: forecast.list,
     };
     res.render("index.ejs", content);
   } catch (error) {
