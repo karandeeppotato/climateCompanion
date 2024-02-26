@@ -28,7 +28,6 @@ app.get("/weather", async (req, res) => {
       API_URL_CURRENT + "&q=New%20Delhi,%20IN&appid=" + API_KEY
     );
     const currData = response_curr.data;
-    // console.log(currData);
     const content = {
       // CURRENT DATA
       currentTemperature: currData.main.temp,
@@ -50,6 +49,14 @@ app.get("/weather", async (req, res) => {
       time_tl: forecast.list,
       weather_tl: forecast.list,
       temp_tl: forecast.list,
+
+      // FORECAST DAYS
+      dayDate: forecast.list,
+      dayDescription: forecast.list,
+      dayDescriptionId: forecast.list,
+      dayMinTemp: forecast.list,
+      dayMaxTemp: forecast.list,
+
     };
     res.render("index.ejs", content);
   } catch (error) {
