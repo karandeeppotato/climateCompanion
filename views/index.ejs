@@ -1,110 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate Companion</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-</head>
-<body>    
-        <nav>
-        <div class="glass-effect-container glass-effect">
-            <div class="navbar-wrapper">
-                <div class="logo-wrapper">
-                    <img src="/images/logo/logo-nobg-cropped.png">
-                </div>                
-                <div class="search-bar-container">
-                    <div class="search-bar-wrapper">
-                        <!--search bar icon-->
-                        <i class="search-icon">🔍</i>
-                        <!--search bar -->
-                        <input type="text" class="search-input" placeholder="Enter City/Country Name...." onclick="toggleDropdown()">
-                        <div class="dropdown" id="myDropdown" style="display:none;">
-                            <a href="#" class="dropdown-item">Lourem</a>
-                            <a href="#" class="dropdown-item">Lourem</a>
-                            <a href="#" class="dropdown-item">Lourem</a>
-                        </div>  
-                    </div>    
-                </div>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="glass-effect-container glass-effect">
+        <div class="navbar-wrapper">
+          <div class="logo-wrapper">
+            <img src="/images/logo/logo-nobg-cropped.png" />
+          </div>
+          <div class="search-bar-container">
+            <div class="search-bar-wrapper">
+              <!--search bar icon-->
+              <i class="search-icon">🔍</i>
+              <!--search bar -->
+              <form action="/weather" method="post">
+                <input
+                  type="text"
+                  class="search-input"
+                  id = "searchInput"
+                  name="searchBar"
+                  placeholder="Enter City/Country Name"
+                  oninput="getSuggestions(this.value)"
+                />
+                <div id="suggestions" class="suggestions"></div>
+              </form>
             </div>
+          </div>
         </div>
-        </nav>
-    
+      </div>
+    </nav>
+
     <section>
-        <div class="body-wrapper">
-            <div class="glass-effect-container glass-effect">
-                <div class="temperature-wrapper">
-                    <div class="temp-degree">
-                        <span id="temp-value"><%= currentTemperature %> °C</span>
-                        <div id="temp-icon">
-                            <!--yaha corressponding icon aaega temperature ke hisab se -->
-                            <!--link nhi kiya abhi just testing ke liye link daal rakha hai-->
-                            <img src="/images/weather_icons/clear_sky_800/clear_sun.gif" alt="animated image"/>
-                        </div>
-                    </div>       
-                    <div class="temp-usp">
-                        <div class="additional-info">
-                            <ul class="detail-list">
-                                <!--Yaha bhi info link karni hai-->
-                                *<li class="info-1">Precipitation: 0%</li>
-                                    <li class="info-2">Humidity: 32%</li>
-                                    <li class="info-3">Wind: 10 km/h</li>
-                                    <li class="info-4">Mostly Cloudy</li>
-                                    <li class="info-5">Feels like:23°C</li>      
-                                </ul>                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="body-wrapper">*
+        <div class="glass-effect-container glass-effect" id="first-grid-div">
+          <div class="temperature-wrapper">
+            <div class="temp-degree">
+              <span id="temp-value"><%= currentTemperature %> °C</span>
+              <div id="temp-icon">
+                <!--yaha corressponding icon aaega temperature ke hisab se -->
+                <!--link nhi kiya abhi just testing ke liye link daal rakha hai-->
+                <img
+                  src="/images/weather_icons/clear_sky_800/clear_sun.gif"
+                  alt="animated image"
+                />
+              </div>
+            </div>
+            <div class="temp-usp">
+              <div class="additional-info">
+                <ul class="detail-list">
+                  <!--Yaha bhi info link karni hai-->
+                  <li class="info-1">Precipitation: 0%</li>
+                  <li class="info-2">Humidity: 32%</li>
+                  <li class="info-3">Wind: 10 km/h</li>
+                  <li class="info-4">Mostly Cloudy</li>
+                  <li class="info-5">Feels like:23°C</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                <div class="glass-effect-container glass-effect">
-                    <div class="time-line-wrapper">
-                        <% for(index = 0; index < 8; index++) { %>
-                            <div class="time-line">            
-                                <div class="timeline-time">
-                                    <%= tl[index].main.temp %>
-                                </div>                            
-                                <div class="timeline-icon">
-                                    <%= tl[index].weather[0].id %> 
-                                </div>                            
-                                <div class="timeline-temp">
-                                    <%= tl[index].dt_txt.slice(11, 16) %> 
-                                </div>                           
-                            </div>
-                        <% } %>
-                    </div>
-                </div>               
-                <div class="glass-effect-container glass-effect">
-                    <section class="5day-climate-wrapper">
-                        <% tl.map((days, index) => { %>
-                            <% if(index % 8 === 0) { %>
-                        <div class="forecast-card-wrapper">   
-                            <div class="date"> 
-                                <%= days.dt_txt.slice(0, 11) %>
-                            </div>                            
-                            <div class="icon"> 
-                                <%= days.weather[0].id %>
-                            </div>                        
-                            <div class="weather-desp">
-                                <%= days.weather[0].description %>
-                            </div>                        
-                            <div class="degree-wrapper">                           
-                                <div class="max-degree">
-                                    <%= days.main.temp_max %>
-                                </div>                        
-                                <div class="min-degree">
-                                    <%= days.main.temp_min %> 
-                                </div>
-                            </div>
-                        </div>
-                        <% }}); %>
-                        <!--card.ejs X 5 times for 5-day Forecast-->
-                    </section>
-                </div>
-            </div>            
-        
+        <div class="glass-effect-container glass-effect">
+          <div class="time-line-wrapper">
+            <% for(index = 0; index < 8; index++) { %>
+            <div class="time-line">
+              <div class="timeline-time"><%= tl[index].main.temp %></div>
+              <div class="timeline-icon"><%= tl[index].weather[0].id %></div>
+              <div class="timeline-temp">
+                <%= tl[index].dt_txt.slice(11, 16) %>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="glass-effect-container glass-effect">
+          <section class="day-climate-wrapper">
+            <% tl.map((days, index) => { %> <% if(index % 8 === 0) { %>
+            <div class="forecast-card-wrapper">
+              <div class="date"><%= days.dt_txt.slice(0, 11) %></div>
+              <div class="icon"><%= days.weather[0].id %></div>
+              <div class="weather-desp"><%= days.weather[0].description %></div>
+              <div class="degree-wrapper">
+                <div class="max-degree">MAX: <%= days.main.temp_max %></div>
+                <div class="min-degree">MIN: <%= days.main.temp_min %></div>
+              </div>
+            </div>
+            <% }}); %>
+            <!--card.ejs X 5 times for 5-day Forecast-->
+          </section>
+        </div>
+      </div>
     </section>
-
-    
-</body>
+    <%- include('suggestions.ejs') %>
+  </body>
 </html>
