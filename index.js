@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import expressIp from "express-ip";
 
 const app = express();
 const port = 3000;
@@ -10,30 +11,31 @@ const API_URL_CURRENT =
   "https://api.openweathermap.org/data/2.5/weather?units=metric";
 const API_KEY = "0773f06d983e61482c094fb56f2cc21a";
 
-// app.use((req, res, next) => {
-//   if (req.url.endsWith('.js')) {
-//     res.setHeader('Content-Type', 'application/javascript');
-//   }
-//   next();
-// });
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(expressIp().getIpInfoMiddleware);
 
-app.get("/", (res, req) => {
-  req.redirect("/weather");
-});
-
-app.get("/weather", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
+    const latitude = req.ipInfo ? req.ipInfo.ll[0] : null;
+    const longitude = req.ipInfo ? req.ipInfo.ll[1] : null;
+
+    if (!latitude || !longitude) {
+      throw new Error("Unable to determine location from IP address.");
+    }
+
+    console.log("Latitude:", latitude, "Longitude:", longitude);
+
     const response_fr = await axios.get(
-      API_URL_FORECAST + "&q=New%20Delhi,%20IN&appid=" + API_KEY
+      API_URL_FORECAST + `&lat=${latitude}&lon=${longitude}&appid=` + API_KEY
     );
     const forecast = response_fr.data;
     const response_curr = await axios.get(
-      API_URL_CURRENT + "&q=New%20Delhi,%20IN&appid=" + API_KEY
+      API_URL_CURRENT + `&lat=${latitude}&lon=${longitude}&appid=` + API_KEY
     );
     const currData = response_curr.data;
+
     const content = {
       // CURRENT DATA
       currentTemperature: currData.main.temp,
@@ -60,7 +62,7 @@ app.get("/weather", async (req, res) => {
   }
 });
 
-app.post("/weather", async (req, res) => {
+app.post("/search", async (req, res) => {
   try {
     // console.log(req.body["searchBar"]);
     const searchItem = req.body["searchBar"];
@@ -93,8 +95,7 @@ app.post("/weather", async (req, res) => {
       tl: forecast.list,
     };
     res.render("index.ejs", content);
-
-  } catch(error) {
+  } catch (error) {
     console.log(error.message);
   }
 });
