@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Climate Companion</title>
     <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav>
-      <div class="glass-effect-container glass-effect">
+      <div class="glass-effect-container glass-effect" id="navabar-effect">
         <div class="navbar-wrapper">
           <div class="logo-wrapper">
             <img src="/images/logo/logo-nobg-cropped.png" />
@@ -20,7 +26,7 @@
                 <input
                   type="text"
                   class="search-input"
-                  id = "searchInput"
+                  id="searchInput"
                   name="searchBar"
                   placeholder="Enter City/Country Name"
                   oninput="getSuggestions(this.value)"
@@ -38,63 +44,229 @@
         <div class="glass-effect-container glass-effect" id="first-grid-div">
           <div class="temperature-wrapper">
             <div class="temp-degree">
+              <!--yaha pe country/state/city name link karna hai-->
+              <text id="temp-area-name"
+                ><%= currentCity %>, <%= currentCountry %></text
+              >
               <span id="temp-value"><%= currentTemperature %>°C</span>
               <div id="temp-icon">
-                <!--yaha corressponding icon aaega temperature ke hisab se -->
-                <!--link nhi kiya abhi just testing ke liye link daal rakha hai-->
+                <% if (currentDescriptionId == 800) { if (isBetween7to6) {
+                %>
                 <img
-                  src="/images/weather_icons/clear_sky_800/clear_sun.gif"
-                  alt="animated image"
+                  src="/images/weather_icons/clear_sky_800/clear_sun.svg"
+                  alt="Clear sky during daytime"
                 />
+                <% } else { %>
+                <img
+                  src="/images/weather_icons/clear_sky_800/clear_moon.svg"
+                  alt="Clear sky during nighttime"
+                />
+                <% } } else if (currentDescriptionId > 800 &&
+                currentDescriptionId <= 899) {  if (isBetween7to6) { %>
+                <img
+                  src="/images/weather_icons/clouds_80x/cloud_sun.svg"
+                  alt="Cloudy daytime"
+                />
+                <% } else { %>
+                <img
+                  src="/images/weather_icons/clouds_80x/cloud_moon.svg"
+                  alt="Cloudy nighttime"
+                />
+                <% }  } else if (currentDescriptionId > 700 &&
+                currentDescriptionId <= 799) {  if (isBetween7to6) { %>
+                <img
+                  src="/images/weather_icons/mist_7xx/mist.svg"
+                  alt="Misty daytime"
+                />
+                <% } else { %>
+                <img
+                  src="/images/weather_icons/mist_7xx/mist.svg"
+                  alt="Misty nighttime"
+                />
+                <% }  } else if (currentDescriptionId > 300 &&
+                currentDescriptionId <= 599) { %>
+                <img
+                  src="/images/weather_icons/rain_5xx_3xx/rain.svg"
+                  alt="Rainy weather"
+                />
+                <% } else if (currentDescriptionId > 600 && currentDescriptionId
+                <= 699) { %>
+                <img
+                  src="/images/weather_icons/snow_6xx/snow.svg"
+                  alt="Snowy weather"
+                />
+                <% } else if (currentDescriptionId > 200 && currentDescriptionId
+                <= 299) { %>
+                <img
+                  src="/images/weather_icons/storm_2xx/storm.svg"
+                  alt="Stormy weather"
+                />
+                <% } %>
               </div>
             </div>
             <div class="temp-usp">
               <div class="additional-info">
+                <description class="temp-usp-desc">
+                  <%= currentDescription %>
+                </description>
                 <ul class="detail-list">
                   <!--Yaha bhi info link karni hai-->
                   <li class="info-1">Precipitation: 0%</li>
                   <li class="info-2">Humidity: 32%</li>
                   <li class="info-3">Wind: 10 km/h</li>
-                  <li class="info-4">Mostly Cloudy</li>
-                  <li class="info-5">Feels like:23°C</li>
+                  <li class="info-4">Feels like:23°C</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="glass-effect-container glass-effect">
+        <div class="glass-effect-container glass-effect" id="Second-grid-div">
           <div class="time-line-wrapper">
             <% for(index = 0; index < 8; index++) { %>
             <div class="time-line">
-              <div class="timeline-time"><%= tl[index].main.temp %></div>
-              <div class="timeline-icon"><%= tl[index].weather[0].id %></div>
-              <div class="timeline-temp">
+              <div class="timeline-time">
                 <%= tl[index].dt_txt.slice(11, 16) %>
+              </div>
+              <div class="timeline-icon">
+                <% if (tl[index].weather[0].id == 800) {  if
+                (isBetween7to6) { %>
+                <img
+                  src="/images/weather_icons/clear_sky_800/clear_sun.svg"
+                  alt="Clear sky during daytime"
+                />
+                <% } else { %>
+                <img
+                  src="/images/weather_icons/clear_sky_800/clear_moon.svg"
+                  alt="Clear sky during nighttime"
+                />
+                <% }  } else if (tl[index].weather[0].id > 800 &&
+                tl[index].weather[0].id <= 899) {  if (isBetween7to6) { %>
+                <img
+                  src="/images/weather_icons/clouds_80x/cloud_sun.svg"
+                  alt="Cloudy daytime"
+                />
+                <% } else { %>
+                <img
+                  src="/images/weather_icons/clouds_80x/cloud_moon.svg"
+                  alt="Cloudy nighttime"
+                />
+                <% }  } else if (tl[index].weather[0].id > 700 &&
+                tl[index].weather[0].id <= 799) {  if (isBetween7to6) { %>
+                <img
+                  src="/images/weather_icons/mist_7xx/mist.svg"
+                  alt="Misty daytime"
+                />
+                <% } else { %>
+                <img
+                  src="/images/weather_icons/mist_7xx/mist.svg"
+                  alt="Misty nighttime"
+                />
+                <% }  } else if (tl[index].weather[0].id > 300 &&
+                tl[index].weather[0].id <= 599) { %>
+                <img
+                  src="/images/weather_icons/rain_5xx_3xx/rain.svg"
+                  alt="Rainy weather"
+                />
+                <% } else if (tl[index].weather[0].id > 600 &&
+                tl[index].weather[0].id <= 699) { %>
+                <img
+                  src="/images/weather_icons/snow_6xx/snow.svg"
+                  alt="Snowy weather"
+                />
+                <% } else if (tl[index].weather[0].id > 200 &&
+                tl[index].weather[0].id <= 299) { %>
+                <img
+                  src="/images/weather_icons/storm_2xx/storm.svg"
+                  alt="Stormy weather"
+                />
+                <% } %>
+              </div>
+              <div class="timeline-temp">
+                <%= Math.floor(tl[index].main.temp) %> °C
               </div>
             </div>
             <% } %>
           </div>
         </div>
-          <section class="day-climate-container">
-            <i id="heading-weather-forecast">5-day Weather Forecast</i>
-            <div class="day-climate-wrapper">
-              <% tl.map((days, index) => { %> <% if(index % 8 === 0) { %>
-              <div class="glass-effect-container glass-effect">
-                <div class="forecast-card-wrapper">
+        <section class="day-climate-container">
+          <i id="heading-weather-forecast">5-day Weather Forecast</i>
+          <div class="day-climate-wrapper">
+            <% tl.map((days, index) => {  if(index % 8 === 0) { %>
+            <div class="glass-effect-container glass-effect">
+              <div class="forecast-card-wrapper">
                 <div class="date"><%= days.dt_txt.slice(0, 11) %></div>
-                <div class="icon"><%= days.weather[0].id %></div>
-                <div class="weather-desp"><%= days.weather[0].description %></div>
+                <div id="forecast-icon">
+                  <% if (days.weather[0].id == 800) { if (isBetween7to6) {
+                  %>
+                  <img
+                    src="/images/weather_icons/clear_sky_800/clear_sun.svg"
+                    alt="Clear sky during daytime"
+                  />
+                  <% } else { %>
+                  <img
+                    src="/images/weather_icons/clear_sky_800/clear_moon.svg"
+                    alt="Clear sky during nighttime"
+                  />
+                  <% } } else if (days.weather[0].id > 800 &&
+                  days.weather[0].id <= 899) { if (isBetween7to6) { %>
+                  <img
+                    src="/images/weather_icons/clouds_80x/cloud_sun.svg"
+                    alt="Cloudy daytime"
+                  />
+                  <% } else { %>
+                  <img
+                    src="/images/weather_icons/clouds_80x/cloud_moon.svg"
+                    alt="Cloudy nighttime"
+                  />
+                  <% } } else if (days.weather[0].id > 700 &&
+                  days.weather[0].id <= 799) { if (isBetween7to6) { %>
+                  <img
+                    src="/images/weather_icons/mist_7xx/mist.svg"
+                    alt="Misty daytime"
+                  />
+                  <% } else { %>
+                  <img
+                    src="/images/weather_icons/mist_7xx/mist.svg"
+                    alt="Misty nighttime"
+                  />
+                  <% } } else if (days.weather[0].id > 300 &&
+                  days.weather[0].id <= 599) { %>
+                  <img
+                    src="/images/weather_icons/rain_5xx_3xx/rain.svg"
+                    alt="Rainy weather"
+                  />
+                  <% } else if (days.weather[0].id >= 600 && days.weather[0].id
+                  <= 699) { %>
+                  <img
+                    src="/images/weather_icons/snow_6xx/snow.svg"
+                    alt="Snowy weather"
+                  />
+                  <% } else if (days.weather[0].id > 200 && days.weather[0].id
+                  <= 299) { %>
+                  <img
+                    src="/images/weather_icons/storm_2xx/storm.svg"
+                    alt="Stormy weather"
+                  />
+                  <% } %>
+                </div>
+                <div class="weather-desp">
+                  <%= days.weather[0].description %>
+                </div>
                 <div class="degree-wrapper">
-                  <div class="max-degree">MAX: <%= days.main.temp_max %></div>
-                  <div class="min-degree">MIN: <%= days.main.temp_min %></div>
+                  <div class="max-degree">
+                    MAX: <%= Math.floor(days.main.temp_max) %> °C
+                  </div>
+                  <div class="min-degree">
+                    MIN: <%= Math.floor(days.main.temp_min) %> °C
+                  </div>
                 </div>
               </div>
-              </div>
-              <% }}); %>
             </div>
-            <!--card.ejs X 5 times for 5-day Forecast-->
-          </section>
+            <% }}); %>
+          </div>
+          <!--card.ejs X 5 times for 5-day Forecast-->
+        </section>
       </div>
     </section>
     <%- include('suggestions.ejs') %>

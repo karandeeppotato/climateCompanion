@@ -1,8 +1,9 @@
 <script>
 
+const suggestionsElement = document.getElementById("suggestions");
+const searchInput = document.getElementById("searchInput");
+
 async function getSuggestions(input) {
-  const suggestionsElement = document.getElementById("suggestions");
-  const searchInput = document.getElementById("searchInput");
 
   suggestionsElement.innerHTML = "";
 
