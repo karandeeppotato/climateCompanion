@@ -16,6 +16,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(expressIp().getIpInfoMiddleware);
 
+function isTimeBetween7AMand6AM(currentTime) {
+  let currentHour = currentTime.getHours();
+  if(currentHour >= 7 && currentHour < 18) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 app.get("/", async (req, res) => {
   try {
     const latitude = req.ipInfo ? req.ipInfo.ll[0] : null;
@@ -36,6 +45,8 @@ app.get("/", async (req, res) => {
     );
     const currData = response_curr.data;
 
+    var currentDate = new Date();
+
     const content = {
       // CURRENT DATA
       currentTemperature: currData.main.temp,
@@ -52,6 +63,7 @@ app.get("/", async (req, res) => {
       currentWindSpeed: currData.wind.speed,
       currentSunrise: currData.sys.sunrise,
       currentSunset: currData.sys.sunset,
+      isBetween7to6: isTimeBetween7AMand6AM(currentDate),
 
       // TIMELINE AND FORECAST
       tl: forecast.list,

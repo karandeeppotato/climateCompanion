@@ -61,27 +61,32 @@ body{
     margin-right: 15px;
     font-size: 24px;
 }
-.search-input{      /*add font style and correct font-size*/
+.search-input{      /*add font style and correct font-size 
+    add media query to handle responsive nature of width */
     padding: 10px;
-    width:1000px;
+    width:875px;
     border: none;
     border-bottom: 3px solid white;
     background-color: transparent;
     outline: none;
-    color:white;
+    color:rgb(255, 252, 252);
     line-height: 2;
     font-size: 20px;
 }
 
 .suggestions{
+    width: 96%;
+    padding: 12px;
+    color: black;
+    font-size: 26px;
     display: none;
     position: absolute;
     background-color: #fff;
     border: 1px solid #ccc;
     max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
+    overflow-y: hidden;
     cursor: pointer;
+    z-index: 98;
 }
 
 /*------- MAIN SECTION -------*/
@@ -148,7 +153,19 @@ body{
 .timeline-time,.timeline-icon,.timeline-temp{
     margin: 10px;    
 }
+/*--- 5-day forecast cards ----*/
+.day-climate-container{
+}
+#heading-weather-forecast{
+    padding-left: 15px;
+    height: fit-content;
+    width: 100%;
+    font-size: 20px;
+    line-height: 2;
+    
+}
 .day-climate-wrapper{
+    column-gap: 15px;
     display: flex;
     justify-content: space-between;
     padding: 15px;

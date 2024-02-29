@@ -15,8 +15,6 @@
           </div>
           <div class="search-bar-container">
             <div class="search-bar-wrapper">
-              <!--search bar icon-->
-              <i class="search-icon">🔍</i>
               <!--search bar -->
               <form action="/search" method="post">
                 <input
@@ -78,22 +76,25 @@
             <% } %>
           </div>
         </div>
-        <div class="glass-effect-container glass-effect">
-          <section class="day-climate-wrapper">
-            <% tl.map((days, index) => { %> <% if(index % 8 === 0) { %>
-            <div class="forecast-card-wrapper">
-              <div class="date"><%= days.dt_txt.slice(0, 11) %></div>
-              <div class="icon"><%= days.weather[0].id %></div>
-              <div class="weather-desp"><%= days.weather[0].description %></div>
-              <div class="degree-wrapper">
-                <div class="max-degree">MAX: <%= days.main.temp_max %></div>
-                <div class="min-degree">MIN: <%= days.main.temp_min %></div>
+          <section class="day-climate-container">
+            <i id="heading-weather-forecast">5-day Weather Forecast</i>
+            <div class="day-climate-wrapper">
+              <% tl.map((days, index) => { %> <% if(index % 8 === 0) { %>
+              <div class="glass-effect-container glass-effect">
+                <div class="forecast-card-wrapper">
+                <div class="date"><%= days.dt_txt.slice(0, 11) %></div>
+                <div class="icon"><%= days.weather[0].id %></div>
+                <div class="weather-desp"><%= days.weather[0].description %></div>
+                <div class="degree-wrapper">
+                  <div class="max-degree">MAX: <%= days.main.temp_max %></div>
+                  <div class="min-degree">MIN: <%= days.main.temp_min %></div>
+                </div>
               </div>
+              </div>
+              <% }}); %>
             </div>
-            <% }}); %>
             <!--card.ejs X 5 times for 5-day Forecast-->
           </section>
-        </div>
       </div>
     </section>
     <%- include('suggestions.ejs') %>
