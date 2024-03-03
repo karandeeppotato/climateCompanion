@@ -228,6 +228,9 @@ body {
   font-size: 24px;
   color: rgb(255, 255, 255);
   font-weight: 600;
+  flex:1;
+  max-width: calc(12.5% - 5px);
+  margin: 5px;
 }
 .timeline-icon img {
   width: 100%;
@@ -298,7 +301,7 @@ body {
   }
 }
 /*---media  query for smaller view -----------*/
-@media screen and (min-width: 750px) and (max-width: 1460px){
+@media screen /*and (min-width: 750px)*/ and (max-width: 1460px){
     .body-wrapper{
       display: flex;
       flex-direction: column;
