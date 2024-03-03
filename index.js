@@ -20,7 +20,7 @@ var currentDate = new Date();
 
 function isTimeBetween7AMand6AM(currentTime) {
   let currentHour = currentTime.getHours();
-  if(currentHour >= 7 && currentHour < 18) {
+  if(currentHour >= 6 && currentHour < 18) {
     return true;
   } else {
     return false;

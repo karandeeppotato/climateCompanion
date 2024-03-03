@@ -47,9 +47,8 @@
               <!--yaha pe country/state/city name link karna hai-->
               <div class="temp-name">
                 <text id="temp-area-name"
-                ><%= currentCity %>, <%= currentCountry %></text
-                >
-                <span id="temp-value"><%= currentTemperature %> °C</span>
+                ><%= currentCity %>, <%= currentCountry %></text>
+                <i id="temp-value"><%= currentTemperature %> °C</i>
               </div>
               
               <div id="temp-icon">
@@ -57,41 +56,34 @@
                 %>
                 <img
                   src="/images/weather_icons/clear_sky_800/clear_sun.svg"
-                  alt="Clear sky during daytime"
-                />
+                  alt="Clear sky during daytime"/>
                 <% } else { %>
                 <img
                   src="/images/weather_icons/clear_sky_800/clear_moon.svg"
-                  alt="Clear sky during nighttime"
-                />
+                  alt="Clear sky during nighttime"/>
                 <% } } else if (currentDescriptionId >= 800 &&
                 currentDescriptionId <= 899) {  if (isBetween7to6) { %>
                 <img
                   src="/images/weather_icons/clouds_80x/cloud_sun.svg"
-                  alt="Cloudy daytime"
-                />
+                  alt="Cloudy daytime"/>
                 <% } else { %>
                 <img
                   src="/images/weather_icons/clouds_80x/cloud_moon.svg"
-                  alt="Cloudy nighttime"
-                />
+                  alt="Cloudy nighttime"/>
                 <% }  } else if (currentDescriptionId >= 700 &&
                 currentDescriptionId <= 799) {  if (isBetween7to6) { %>
                 <img
                   src="/images/weather_icons/mist_7xx/mist.svg"
-                  alt="Misty daytime"
-                />
+                  alt="Misty daytime"/>
                 <% } else { %>
                 <img
                   src="/images/weather_icons/mist_7xx/mist.svg"
-                  alt="Misty nighttime"
-                />
+                  alt="Misty nighttime"/>
                 <% }  } else if (currentDescriptionId >= 300 &&
                 currentDescriptionId <= 599) { %>
                 <img
                   src="/images/weather_icons/rain_5xx_3xx/rain.svg"
-                  alt="Rainy weather"
-                />
+                  alt="Rainy weather"/>
                 <% } else if (currentDescriptionId >= 600 && currentDescriptionId
                 <= 699) { %>
                 <img
@@ -109,15 +101,20 @@
                   <%= currentDescription %>
                 </description>
               </div>
+              <div id="temp-description">
+                <%= currentMaxTemp %> °C/<%= currentMinTemp %> °C, Feels like <%= currentFeelsLike %> °C
+              </div>
             </div>
             <div class="temp-usp">
               <div class="additional-info">
                 <ul class="detail-list">
                   <!--Yaha bhi info link karni hai-->
-                  <li class="info-1">Precipitation: 0%</li>
-                  <li class="info-2">Humidity: 32%</li>
-                  <li class="info-3">Wind: 10 km/h</li>
-                  <li class="info-4">Feels like:23°C</li>
+                  <li class="info-1">INFO 1</li>
+                  <li class="info-2">INFO 2</li>
+                  <li class="info-3">INFO 3</li>
+                  <li class="info-4">INFO 4</li>
+                  <li class="info-5">INFO 5</li>
+                  <li class="info-6">INFO 6</li>
                 </ul>
               </div>
             </div>
@@ -257,17 +254,17 @@
                 </div>
                 <div class="degree-wrapper">
                   <div class="max-min-degree">
-                    TEMP : <%= Math.floor(days.main.temp_max) %><span id="degree-hide"> °C </span> / <%= Math.floor(days.main.temp_min) %> °C
+                    TEMP : <%= Math.floor(days.main.temp_max) %><i id="degree-hide"> °C </i> / <%= Math.floor(days.main.temp_min) %> °C
                   </div>
                 </div>
               </div>
             </div>
             <% }}); %>
           </div>
-          <!--card.ejs X 5 times for 5-day Forecast-->
         </section>
       </div>
     </section>
+    <%- include('background.ejs') %> 
     <%- include('suggestions.ejs') %>
   </body>
 </html>
