@@ -45,10 +45,13 @@
           <div class="temperature-wrapper">
             <div class="temp-degree">
               <!--yaha pe country/state/city name link karna hai-->
-              <text id="temp-area-name"
+              <div class="temp-name">
+                <text id="temp-area-name"
                 ><%= currentCity %>, <%= currentCountry %></text
-              >
-              <span id="temp-value"><%= currentTemperature %>°C</span>
+                >
+                <span id="temp-value"><%= currentTemperature %> °C</span>
+              </div>
+              
               <div id="temp-icon">
                 <% if (currentDescriptionId == 800) { if (isBetween7to6) {
                 %>
@@ -61,7 +64,7 @@
                   src="/images/weather_icons/clear_sky_800/clear_moon.svg"
                   alt="Clear sky during nighttime"
                 />
-                <% } } else if (currentDescriptionId > 800 &&
+                <% } } else if (currentDescriptionId >= 800 &&
                 currentDescriptionId <= 899) {  if (isBetween7to6) { %>
                 <img
                   src="/images/weather_icons/clouds_80x/cloud_sun.svg"
@@ -72,7 +75,7 @@
                   src="/images/weather_icons/clouds_80x/cloud_moon.svg"
                   alt="Cloudy nighttime"
                 />
-                <% }  } else if (currentDescriptionId > 700 &&
+                <% }  } else if (currentDescriptionId >= 700 &&
                 currentDescriptionId <= 799) {  if (isBetween7to6) { %>
                 <img
                   src="/images/weather_icons/mist_7xx/mist.svg"
@@ -83,32 +86,32 @@
                   src="/images/weather_icons/mist_7xx/mist.svg"
                   alt="Misty nighttime"
                 />
-                <% }  } else if (currentDescriptionId > 300 &&
+                <% }  } else if (currentDescriptionId >= 300 &&
                 currentDescriptionId <= 599) { %>
                 <img
                   src="/images/weather_icons/rain_5xx_3xx/rain.svg"
                   alt="Rainy weather"
                 />
-                <% } else if (currentDescriptionId > 600 && currentDescriptionId
+                <% } else if (currentDescriptionId >= 600 && currentDescriptionId
                 <= 699) { %>
                 <img
                   src="/images/weather_icons/snow_6xx/snow.svg"
                   alt="Snowy weather"
                 />
-                <% } else if (currentDescriptionId > 200 && currentDescriptionId
+                <% } else if (currentDescriptionId >= 200 && currentDescriptionId
                 <= 299) { %>
                 <img
                   src="/images/weather_icons/storm_2xx/storm.svg"
                   alt="Stormy weather"
                 />
                 <% } %>
+                <description class="temp-usp-desc">
+                  <%= currentDescription %>
+                </description>
               </div>
             </div>
             <div class="temp-usp">
               <div class="additional-info">
-                <description class="temp-usp-desc">
-                  <%= currentDescription %>
-                </description>
                 <ul class="detail-list">
                   <!--Yaha bhi info link karni hai-->
                   <li class="info-1">Precipitation: 0%</li>
@@ -120,7 +123,6 @@
             </div>
           </div>
         </div>
-        // potato
         <div class="glass-effect-container glass-effect" id="Second-grid-div">
           <div class="time-line-wrapper">
             <% for(index = 0; index < 8; index++) { %>
@@ -140,7 +142,7 @@
                   src="/images/weather_icons/clear_sky_800/clear_moon.svg"
                   alt="Clear sky during nighttime"
                 />
-                <% }  } else if (tl[index].weather[0].id > 800 &&
+                <% }  } else if (tl[index].weather[0].id >= 800 &&
                 tl[index].weather[0].id <= 899) {  if (isBetween7to6) { %>
                 <img
                   src="/images/weather_icons/clouds_80x/cloud_sun.svg"
@@ -151,7 +153,7 @@
                   src="/images/weather_icons/clouds_80x/cloud_moon.svg"
                   alt="Cloudy nighttime"
                 />
-                <% }  } else if (tl[index].weather[0].id > 700 &&
+                <% }  } else if (tl[index].weather[0].id >= 700 &&
                 tl[index].weather[0].id <= 799) {  if (isBetween7to6) { %>
                 <img
                   src="/images/weather_icons/mist_7xx/mist.svg"
@@ -162,19 +164,19 @@
                   src="/images/weather_icons/mist_7xx/mist.svg"
                   alt="Misty nighttime"
                 />
-                <% }  } else if (tl[index].weather[0].id > 300 &&
+                <% }  } else if (tl[index].weather[0].id >= 300 &&
                 tl[index].weather[0].id <= 599) { %>
                 <img
                   src="/images/weather_icons/rain_5xx_3xx/rain.svg"
                   alt="Rainy weather"
                 />
-                <% } else if (tl[index].weather[0].id > 600 &&
+                <% } else if (tl[index].weather[0].id >= 600 &&
                 tl[index].weather[0].id <= 699) { %>
                 <img
                   src="/images/weather_icons/snow_6xx/snow.svg"
                   alt="Snowy weather"
                 />
-                <% } else if (tl[index].weather[0].id > 200 &&
+                <% } else if (tl[index].weather[0].id >= 200 &&
                 tl[index].weather[0].id <= 299) { %>
                 <img
                   src="/images/weather_icons/storm_2xx/storm.svg"
@@ -208,7 +210,7 @@
                     src="/images/weather_icons/clear_sky_800/clear_moon.svg"
                     alt="Clear sky during nighttime"
                   />
-                  <% } } else if (days.weather[0].id > 800 &&
+                  <% } } else if (days.weather[0].id >= 800 &&
                   days.weather[0].id <= 899) { if (isBetween7to6) { %>
                   <img
                     src="/images/weather_icons/clouds_80x/cloud_sun.svg"
@@ -219,7 +221,7 @@
                     src="/images/weather_icons/clouds_80x/cloud_moon.svg"
                     alt="Cloudy nighttime"
                   />
-                  <% } } else if (days.weather[0].id > 700 &&
+                  <% } } else if (days.weather[0].id >= 700 &&
                   days.weather[0].id <= 799) { if (isBetween7to6) { %>
                   <img
                     src="/images/weather_icons/mist_7xx/mist.svg"
@@ -230,7 +232,7 @@
                     src="/images/weather_icons/mist_7xx/mist.svg"
                     alt="Misty nighttime"
                   />
-                  <% } } else if (days.weather[0].id > 300 &&
+                  <% } } else if (days.weather[0].id >= 300 &&
                   days.weather[0].id <= 599) { %>
                   <img
                     src="/images/weather_icons/rain_5xx_3xx/rain.svg"
@@ -242,7 +244,7 @@
                     src="/images/weather_icons/snow_6xx/snow.svg"
                     alt="Snowy weather"
                   />
-                  <% } else if (days.weather[0].id > 200 && days.weather[0].id
+                  <% } else if (days.weather[0].id >= 200 && days.weather[0].id
                   <= 299) { %>
                   <img
                     src="/images/weather_icons/storm_2xx/storm.svg"
@@ -254,11 +256,8 @@
                   <%= days.weather[0].description %>
                 </div>
                 <div class="degree-wrapper">
-                  <div class="max-degree">
-                    MAX: <%= Math.floor(days.main.temp_max) %> °C
-                  </div>
-                  <div class="min-degree">
-                    MIN: <%= Math.floor(days.main.temp_min) %> °C
+                  <div class="max-min-degree">
+                    TEMP : <%= Math.floor(days.main.temp_max) %><span id="degree-hide"> °C </span> / <%= Math.floor(days.main.temp_min) %> °C
                   </div>
                 </div>
               </div>

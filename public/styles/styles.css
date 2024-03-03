@@ -13,7 +13,7 @@ body {
     /* background-color: #242324; */
     /* background-image: linear-gradient(315deg, #242324 20%, #4d4f50 54%, #b1b5b1 91%); */
     background-color: #0093E9;
-background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
+    background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
     height: 97vh;
     width: 100%;
     background-size: 100%;
@@ -146,7 +146,7 @@ background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
   /*background-color: aquamarine;*/
 }
 /*----Weather Icon-----*/
-.temp-degree {
+.temp-degree, .temp-name {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,10 +161,13 @@ background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
   font-size: 105px;
 }
 #temp-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 #temp-icon img {
-  margin-left: 15px;
   width: 30%;
   height: auto;
   object-fit: contain;
@@ -179,6 +182,7 @@ background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
   flex-direction: column;
 }
 .temp-usp-desc {
+  font-size: 25px;
   text-transform: capitalize;
   text-align: center;
 }
@@ -235,6 +239,7 @@ background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
   color: white;
 }
 .forecast-card-wrapper {
+  /* min-width: 210px; */
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -253,11 +258,45 @@ background-image: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
   flex-direction: row;
   padding: 5px;
 }
-.max-degree {
-  padding-right: 20px;
+.max-min-degree {
+  /*padding-right: 20px;*/
 }
 
 .weather-desp {
   text-transform: capitalize;
   text-align: center;
 }
+
+/*----media query for width 1650px just adjustment*/
+@media screen and (min-width:1400px) and  (max-width:1645px){
+  .time-line-wrapper{
+    margin: auto;
+  }
+  .time-line{
+    padding:10px 10px 10px 15px;
+  }
+  #degree-hide{
+    display: none;
+  }
+}
+/*---media  query for smaller view -----------*/
+@media screen and (min-width: 750px) and (max-width: 1460px){
+    .body-wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    } 
+    .temp-degree{
+      flex-direction: row;
+      justify-content:space-between;
+    }
+    .temp-name{
+      flex-direction: column;
+      
+    }
+    #Second-grid-div,.time-line-wrapper{
+      min-width:970px;
+      overflow:scroll;
+    }
+  }
