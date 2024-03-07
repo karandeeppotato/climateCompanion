@@ -108,13 +108,13 @@
             <div class="temp-usp">
               <div class="additional-info">
                 <ul class="detail-list">
-                  <!--Yaha bhi info link karni hai-->
-                  <li class="info-1">INFO 1</li>
-                  <li class="info-2">INFO 2</li>
-                  <li class="info-3">INFO 3</li>
-                  <li class="info-4">INFO 4</li>
-                  <li class="info-5">INFO 5</li>
-                  <li class="info-6">INFO 6</li>
+                  <!--jo chipak rhe hai vo css padding se ho jaega-->
+                  <li class="info-1">Humidity: <br><%= currentHumidity %>% </li>
+                  <li class="info-2">Pressure: <br><%= currentPressure %>hPa</li>
+                  <li class="info-3">Visibility: <br><%= currentVisibility %>m</li>
+                  <li class="info-4">Wind speed: <br><%= currentWindSpeed %>m/s</li>
+                  <li class="info-5">Sunsrise: <br><%= currentSunrise.slice(10, 14) %> am</li>
+                  <li class="info-6">Sunset: <br><%= currentSunset.slice(10, 14) %> pm</li>
                 </ul>
               </div>
             </div>
