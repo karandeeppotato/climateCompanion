@@ -1,23 +1,19 @@
 /* icons ka color scheme check karna hai s(pecially rain drops color)*/
 /* icons ke container ka size bhi set karna hai */
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
+
 body {
     color: white;
     font-family: "Poppins";
-    padding: 0;
-    margin: 0;
-    /* background-color: #242324; */
-    /* background-image: linear-gradient(315deg, #242324 20%, #4d4f50 54%, #b1b5b1 91%); */
-    /* height: 97vh;
-    width: 100%; */
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 .morning {
   background: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
@@ -25,8 +21,6 @@ body {
 
 .night {
   background: linear-gradient(315deg, #242324 20%, #4d4f50 100%);
-  /* background: linear-gradient(315deg, #090973 0%, #2E2157 100%); */
-  /* background: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%); */
 }
 /*----Glass Effect----*/
 .glass-effect-container {
