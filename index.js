@@ -100,8 +100,8 @@ app.post("/search", async (req, res) => {
       currentPressure: currData.main.pressure,
       currentVisibility: currData.visibility,
       currentWindSpeed: currData.wind.speed,
-      currentSunrise: currData.sys.sunrise,
-      currentSunset: currData.sys.sunset,
+      currentSunrise: new Date((currData.sys.sunrise) * 1000).toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+      currentSunset: new Date((currData.sys.sunset) * 1000).toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
       isBetween7to6: isTimeBetween7AMand6AM(currentDate),
 
       // TIMELINE AND FORECAST
