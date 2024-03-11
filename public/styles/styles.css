@@ -5,7 +5,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body {
@@ -177,8 +177,16 @@ body {
 }
 #temp-description{
   font-size: 28px;
+  padding: 10px 0px;
 }
 /*----Weather Details------*/
+.time-line-wrapper{
+  margin:0;
+}
+.time-line{
+  padding:0;
+}
+
 .temp-usp {
   padding: 10px 40px;
   font-size: 25px;
@@ -188,11 +196,13 @@ body {
   flex-direction: column;
 }
 .temp-usp-desc {
+  padding-top: 10px;
   font-size: 25px;
   text-transform: capitalize;
   text-align: center;
 }
 .additional-info ul {
+  /* *border-top: 10px solid black; */
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
   grid-template-rows: repeat(2, auto); 
@@ -200,6 +210,10 @@ body {
   padding: 0;
   list-style: none; 
   list-style-type: none;
+}
+
+.usp-info{
+  padding: 10px;
 }
 
 /*-----timeline-----*/
@@ -224,7 +238,7 @@ body {
   font-weight: 600;
   flex:1;
   max-width: calc(12.5% - 5px);
-  margin: 5px;
+  margin: auto auto;
 }
 .timeline-icon img {
   width: 100%;
@@ -295,7 +309,7 @@ body {
   }
 }
 /*---media  query for smaller view -----------*/
-@media screen /*and (min-width: 750px)*/ and (max-width: 1460px){
+@media screen and (min-width: 1060px) and (max-width: 1460px){
     .body-wrapper{
       display: flex;
       flex-direction: column;
@@ -303,15 +317,72 @@ body {
       align-items: center;
     } 
     .temp-degree{
+      padding: 10px 0px;
       flex-direction: row;
-      justify-content:space-between;
+      justify-content:space-around;
     }
-    .temp-name{
-      flex-direction: column;
-      
+    .time-line-wrapper{
+      margin: auto;
     }
+    .time-line{
+      padding:10px 10px 10px 15px;
+    }
+    #degree-hide{
+      display: none;
+    }
+
     #Second-grid-div,.time-line-wrapper{
       min-width:970px;
       /* overflow:scroll; */
     }
+    #heading-weather-forecast{
+      font-size: xx-large;
+    }
   }
+
+@media screen and (min-width:750px) and (max-width:1060px){
+  .body-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } 
+  #temp-area-name,#temp-value{
+    font-size: 28px;
+  }
+  #temp-description{
+    font-size: 22px;
+  }
+  .usp-info{
+    font-size: 18px;
+  }
+  .additional-info ul{
+    gap: 5px;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,auto);
+  }
+
+
+  .temp-degree{
+    padding: 10px 0px;
+    flex-direction: row;
+    justify-content:space-around;
+  }
+  .time-line-wrapper{
+    margin: auto;
+  }
+  .time-line{
+    padding:10px 10px 10px 15px;
+  }
+  #degree-hide{
+    display: none;
+  }
+
+  #Second-grid-div,.time-line-wrapper{
+    min-width:970px;
+    overflow:scroll;
+  }
+  #heading-weather-forecast{
+    font-size: xx-large;
+  }
+}

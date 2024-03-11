@@ -109,12 +109,12 @@
               <div class="additional-info">
                 <ul class="detail-list">
                   <!--jo chipak rhe hai vo css padding se ho jaega-->
-                  <li class="info-1">Humidity: <br><%= currentHumidity %>% </li>
-                  <li class="info-2">Pressure: <br><%= currentPressure %>hPa</li>
-                  <li class="info-3">Visibility: <br><%= currentVisibility %>m</li>
-                  <li class="info-4">Wind speed: <br><%= currentWindSpeed %>m/s</li>
-                  <li class="info-5">Sunsrise: <br><%= currentSunrise %></li>
-                  <li class="info-6">Sunset: <br><%= currentSunset %></li>
+                  <li class="usp-info" id="info-2">Pressure: <br><%= currentPressure %>hPa</li>
+                  <li class="usp-info" id="info-1">Humidity: <br><%= currentHumidity %>% </li>
+                  <li class="usp-info" id="info-3">Visibility: <br><%= currentVisibility %>m</li>
+                  <li class="usp-info" id="info-4">Wind speed: <br><%= currentWindSpeed %>m/s</li>
+                  <li class="usp-info" id="info-5">Sunsrise: <br><%= currentSunrise %></li>
+                  <li class="usp-info" id="info-6">Sunset: <br><%= currentSunset %></li>
                 </ul>
               </div>
             </div>
@@ -167,11 +167,11 @@
             <% } %>
           </div>
         </div>
-        <section class="day-climate-container">
+        <section class="day-climate-container" id="Third-grid-div">
           <i id="heading-weather-forecast">5-day Weather Forecast</i>
           <div class="day-climate-wrapper">
             <% tl.map((days, index) => {  if(index % 8 === 0) { %>
-            <div class="glass-effect-container glass-effect">
+            <div class="glass-effect-container glass-effect" id="timeline-glass-effect">
               <div class="forecast-card-wrapper">
                 <div class="date"><%= days.dt_txt.slice(0, 11) %></div>
                 <div id="forecast-icon">
