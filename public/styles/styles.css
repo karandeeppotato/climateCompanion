@@ -50,18 +50,20 @@ body {
 .navbar-wrapper {
   display: flex;
   flex-direction: row;
+  align-items:center;
 }
 
 .logo-wrapper {
   height: 100%;
-  width: auto;
+  width: 20%;
+  max-width: max-content;
   overflow: hidden;  
   padding-top: 10px;
   padding-left: 10px;
 }
 .logo-wrapper img {
   align-items: left;
-  width: 95%;
+  width: 90%;
   height: fit-content;
   object-fit: contain;
   margin-left: 10px;
@@ -180,13 +182,12 @@ body {
   padding: 10px 0px;
 }
 /*----Weather Details------*/
+.break{
+  display: none;
+}
 .time-line-wrapper{
   margin:0;
 }
-.time-line{
-  padding:0;
-}
-
 .temp-usp {
   padding: 10px 40px;
   font-size: 25px;
@@ -233,7 +234,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 10px 15px 10px 20px;
-  font-size: 24px;
+  font-size: clamp(1.25rem, 0.6452rem + 1.2903vw, 1.5rem);
   color: rgb(255, 255, 255);
   font-weight: 600;
   flex:1;
@@ -309,15 +310,24 @@ body {
   }
 }
 /*---media  query for smaller view -----------*/
-@media screen and (min-width: 1060px) and (max-width: 1460px){
-    .body-wrapper{
+@media screen and (min-width: 1060px) and (max-width: 1460px){ 
+  .body-wrapper{
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     } 
+    .navbar-wrapper{
+      gap: 20px;
+    }
+    .search-bar-wrapper,.search-input{
+      width: 100%;
+    }
+    .search-bar-wrapper form{
+      width: 80%;
+    }
     .temp-degree{
-      padding: 10px 0px;
+      padding: 10px;
       flex-direction: row;
       justify-content:space-around;
     }
@@ -327,6 +337,14 @@ body {
     .time-line{
       padding:10px 10px 10px 15px;
     }
+
+    #temp-value{
+      font-size: clamp(4.375rem, -1.5875rem + 9vw, 6.625rem);
+    }
+    #temp-area-name{
+      font-size: clamp(1.5625rem, -0.9219rem + 3.75vw, 2.5rem);
+    }
+
     #degree-hide{
       display: none;
     }
@@ -347,42 +365,59 @@ body {
     justify-content: center;
     align-items: center;
   } 
-  #temp-area-name,#temp-value{
-    font-size: 28px;
+  .navbar-wrapper{
+    gap: 30px;
   }
+  .search-bar-wrapper,.search-input{
+    width: 100%;
+  }
+  .search-bar-wrapper form{
+    width: 80%;
+  }
+  .temp-name{
+    min-width: 110px;
+  }
+  .break{
+    display: block;
+  }
+  #temp-area-name,#temp-value{
+    font-size: clamp(2.1875rem, -0.0806rem + 4.8387vw, 3.125rem);  }
   #temp-description{
-    font-size: 22px;
+    font-size: clamp(1.25rem, 0.0403rem + 2.5806vw, 1.75rem);
   }
   .usp-info{
     font-size: 18px;
   }
   .additional-info ul{
     gap: 5px;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(2,auto);
   }
-
-
   .temp-degree{
-    padding: 10px 0px;
+    padding: 10px;
     flex-direction: row;
     justify-content:space-around;
   }
+
   .time-line-wrapper{
     margin: auto;
   }
   .time-line{
-    padding:10px 10px 10px 15px;
+    padding:10px;
+    min-width: 80px;
   }
   #degree-hide{
     display: none;
   }
-
-  #Second-grid-div,.time-line-wrapper{
-    min-width:970px;
-    overflow:scroll;
+  .time-line-wrapper{
+    /* min-width:970px; */
+    overflow-x: scroll;
+  }
+  .time-line-wrapper::-webkit-scrollbar {
+    display: none;
   }
   #heading-weather-forecast{
     font-size: xx-large;
+  }
+  .day-climate-wrapper{
+    font-size: clamp(0.625rem, -0.5847rem + 2.5806vw, 1.125rem);
   }
 }
