@@ -21,7 +21,6 @@
           </div>
           <div class="search-bar-container">
             <div class="search-bar-wrapper">
-              <!--search bar -->
               <form action="/search" method="post">
                 <input
                   type="text"
@@ -31,7 +30,6 @@
                   placeholder="Enter City/Country Name"
                   oninput="getSuggestions(this.value)"
                 />
-                <div id="suggestions" class="suggestions"></div>
               </form>
             </div>
           </div>
@@ -44,7 +42,6 @@
         <div class="glass-effect-container glass-effect" id="first-grid-div">
           <div class="temperature-wrapper">
             <div class="temp-degree">
-              <!--yaha pe country/state/city name link karna hai-->
               <div class="temp-name">
                 <text id="temp-area-name"
                 ><%= currentCity %>, <%= currentCountry %></text>
@@ -108,7 +105,6 @@
             <div class="temp-usp">
               <div class="additional-info">
                 <ul class="detail-list">
-                  <!--jo chipak rhe hai vo css padding se ho jaega-->
                   <li class="usp-info" id="info-2">Pressure: <br id="usp-li"><%= currentPressure %>hPa</li>
                   <li class="usp-info" id="info-1">Humidity: <br id="usp-li"><%= currentHumidity %>% </li>
                   <li class="usp-info" id="info-3">Visibility: <br id="usp-li"><%= currentVisibility %>m</li>
@@ -244,6 +240,5 @@
       </div>
     </section>
     <%- include('background.ejs') %> 
-    <%- include('suggestions.ejs') %>
   </body>
 </html>

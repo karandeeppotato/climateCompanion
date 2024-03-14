@@ -1,11 +1,7 @@
-/* icons ka color scheme check karna hai s(pecially rain drops color)*/
-/* icons ke container ka size bhi set karna hai */
-
 html, body {
   height: auto;
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
 }
 
 body {
@@ -119,21 +115,6 @@ body::-webkit-scrollbar {
     border-bottom: 3px solid #FFFAFA; /* Change background color on hover */ 
   }
 
-.suggestions {
-  width: 96%;
-  padding: 12px;
-  color: black;
-  font-size: 26px;
-  display: none !important;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: hidden;
-  cursor: pointer;
-  z-index: 98;
-}
-
 /*------- MAIN SECTION -------*/
 .body-wrapper {
   align-items: center;
@@ -149,16 +130,13 @@ body::-webkit-scrollbar {
   grid-column: 2 / span 1;
   grid-row: 1 / span 2;
 }
-.temperature-wrapper {
-  /*background-color: aquamarine;*/
-}
+
 /*----Weather Icon-----*/
 .temp-degree, .temp-name {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*background-color: rgb(121, 172, 242);*/
 }
 #temp-area-name {
   padding-top: 15px;
@@ -205,7 +183,6 @@ body::-webkit-scrollbar {
   text-align: center;
 }
 .additional-info ul {
-  /* *border-top: 10px solid black; */
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
   grid-template-rows: repeat(2, auto); 
@@ -462,7 +439,7 @@ body::-webkit-scrollbar {
   .temp-usp-desc{font-size: clamp(0.75rem, 0.3779rem + 1.8605vw, 1.25rem); }
   .temp-name{font-size: clamp(0.625rem, 0.1875rem + 2vw, 1.125rem); }
   #temp-icon{font-size: clamp(0.625rem, 0.1875rem + 2vw, 1.125rem); }
-  #temp-icon img{width: 42%;}
+  #temp-icon img{width: 42%; margin-top: 10px;}
   #temp-description{
     font-size: clamp(0.625rem, 0.2529rem + 1.8605vw, 1.125rem);
     align-items: center;

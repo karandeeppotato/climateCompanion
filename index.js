@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import expressIp from "express-ip";
+import 'dotenv/config';
 
 const app = express();
 const port = 3000;
@@ -9,7 +10,7 @@ const API_URL_FORECAST =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric";
 const API_URL_CURRENT =
   "https://api.openweathermap.org/data/2.5/weather?units=metric";
-const API_KEY = "0773f06d983e61482c094fb56f2cc21a";
+const API_KEY = process.env.API_KEY;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
