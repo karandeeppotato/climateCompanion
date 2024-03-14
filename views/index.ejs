@@ -48,7 +48,7 @@
               <div class="temp-name">
                 <text id="temp-area-name"
                 ><%= currentCity %>, <%= currentCountry %></text>
-                <i id="temp-value"><%= currentTemperature %> °C</i>
+                <text id="temp-value"><%= currentTemperature %> °C</text>
               </div>
               
               <div id="temp-icon">
@@ -102,19 +102,19 @@
                 </description>
               </div>
               <div id="temp-description">
-                <%= currentMaxTemp %> °C/<%= currentMinTemp %> °C, <br class="break">Feels like <%= currentFeelsLike %> °C
+                <%= currentMaxTemp %> °C/<%= currentMinTemp %> °C, <br class="break"><temp>Feels like <%= currentFeelsLike %> °C</temp>
               </div>
             </div>
             <div class="temp-usp">
               <div class="additional-info">
                 <ul class="detail-list">
                   <!--jo chipak rhe hai vo css padding se ho jaega-->
-                  <li class="usp-info" id="info-2">Pressure: <br><%= currentPressure %>hPa</li>
-                  <li class="usp-info" id="info-1">Humidity: <br><%= currentHumidity %>% </li>
-                  <li class="usp-info" id="info-3">Visibility: <br><%= currentVisibility %>m</li>
-                  <li class="usp-info" id="info-4">Wind speed: <br><%= currentWindSpeed %>m/s</li>
-                  <li class="usp-info" id="info-5">Sunsrise: <br><%= currentSunrise %></li>
-                  <li class="usp-info" id="info-6">Sunset: <br><%= currentSunset %></li>
+                  <li class="usp-info" id="info-2">Pressure: <br id="usp-li"><%= currentPressure %>hPa</li>
+                  <li class="usp-info" id="info-1">Humidity: <br id="usp-li"><%= currentHumidity %>% </li>
+                  <li class="usp-info" id="info-3">Visibility: <br id="usp-li"><%= currentVisibility %>m</li>
+                  <li class="usp-info" id="info-4">Wind speed: <br id="usp-li"><%= currentWindSpeed %>m/s</li>
+                  <li class="usp-info" id="info-5">Sunsrise: <br id="usp-li-1"><%= currentSunrise %></li>
+                  <li class="usp-info" id="info-6">Sunset: <br id="usp-li-1"><%= currentSunset %></li>
                 </ul>
               </div>
             </div>
@@ -168,7 +168,7 @@
           </div>
         </div>
         <section class="day-climate-container" id="Third-grid-div">
-          <i id="heading-weather-forecast">5-day Weather Forecast</i>
+          <heading id="heading-weather-forecast">5-day Weather Forecast</heading>
           <div class="day-climate-wrapper">
             <% tl.map((days, index) => {  if(index % 8 === 0) { %>
             <div class="glass-effect-container glass-effect" id="timeline-glass-effect">
@@ -233,7 +233,7 @@
                 </div>
                 <div class="degree-wrapper">
                   <div class="max-min-degree">
-                    TEMP : <%= Math.floor(days.main.temp_max) %><i id="degree-hide"> °C </i> / <%= Math.floor(days.main.temp_min) %> °C
+                    TEMP :<br> <%= Math.floor(days.main.temp_max) %><i id="degree-hide"> °C </i> / <%= Math.floor(days.main.temp_min) %> °C
                   </div>
                 </div>
               </div>
