@@ -1,15 +1,3 @@
-<% 
-        function isTimeBetween7AMand6AM(currentTime) {
-          let currentHour = currentTime.getHours();
-          console.log(currentHour);
-          if (currentHour >= 6 && currentHour < 18) {
-            return true;
-          } else {
-            return false;
-          }
-        }  
-%>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,26 +49,26 @@
               </div>
               
               <div id="temp-icon">
-                <% if (currentDescriptionId == 800) { if (isTimeBetween7AMand6AM(new Date())) {
+                <% if (currentDescriptionId == 800) { if (isMorning) {
                 %>
                 <img
                   src="/images/weather_icons/clear_sky_800/clear_sun.svg"
                   alt="Clear sky during daytime"/>
                 <% } else { %>
                 <img
-                  src="/images/weather_icons/clear_sky_800/clear_moon.svg"
+                  src="/images/weather_icons/clear_sky_800/clear_sun.svg"
                   alt="Clear sky during nighttime"/>
                 <% } } else if (currentDescriptionId >= 800 &&
-                currentDescriptionId <= 899) {  if (isTimeBetween7AMand6AM(new Date())) { %>
+                currentDescriptionId <= 899) {  if (isMorning) { %>
                 <img
                   src="/images/weather_icons/clouds_80x/cloud_sun.svg"
                   alt="Cloudy daytime"/>
                 <% } else { %>
                 <img
-                  src="/images/weather_icons/clouds_80x/cloud_moon.svg"
+                  src="/images/weather_icons/clouds_80x/cloud_sun.svg"
                   alt="Cloudy nighttime"/>
                 <% }  } else if (currentDescriptionId >= 700 &&
-                currentDescriptionId <= 799) {  if (isTimeBetween7AMand6AM(new Date())) { %>
+                currentDescriptionId <= 799) {  if (isMorning) { %>
                 <img
                   src="/images/weather_icons/mist_7xx/mist.svg"
                   alt="Misty daytime"/>
@@ -137,17 +125,17 @@
               </div>
               <div class="timeline-icon">
                 <% if (tl[index].weather[0].id == 800) {  if
-                (isTimeBetween7AMand6AM(new Date())) { %>
+                (isMorning) { %>
                 <img src="/images/weather_icons/clear_sky_800/clear_sun.svg" alt="Clear sky during daytime"/>
                 <% } else { %>
-                <img src="/images/weather_icons/clear_sky_800/clear_moon.svg" alt="Clear sky during nighttime"/>
+                <img src="/images/weather_icons/clear_sky_800/clear_sun.svg" alt="Clear sky during nighttime"/>
                 <% }  } else if (tl[index].weather[0].id >= 800 &&
-                tl[index].weather[0].id <= 899) {  if (isTimeBetween7AMand6AM(new Date())) { %>
+                tl[index].weather[0].id <= 899) {  if (isMorning) { %>
                 <img src="/images/weather_icons/clouds_80x/cloud_sun.svg" alt="Cloudy daytime"/>
                 <% } else { %>
-                <img src="/images/weather_icons/clouds_80x/cloud_moon.svg" alt="Cloudy nighttime"/>
+                <img src="/images/weather_icons/clouds_80x/cloud_sun.svg" alt="Cloudy nighttime"/>
                 <% }  } else if (tl[index].weather[0].id >= 700 &&
-                tl[index].weather[0].id <= 799) {  if (isTimeBetween7AMand6AM(new Date())) { %>
+                tl[index].weather[0].id <= 799) {  if (isMorning) { %>
                 <img src="/images/weather_icons/mist_7xx/mist.svg" alt="Misty daytime" />
                 <% } else { %>
                 <img src="/images/weather_icons/mist_7xx/mist.svg" alt="Misty nighttime" />
@@ -183,7 +171,7 @@
               <div class="forecast-card-wrapper">
                 <div class="date"><%= days.dt_txt.slice(0, 11) %></div>
                 <div id="forecast-icon">
-                  <% if (days.weather[0].id == 800) { if (isTimeBetween7AMand6AM(new Date())) {
+                  <% if (days.weather[0].id == 800) { if (isMorning) {
                   %>
                   <img
                     src="/images/weather_icons/clear_sky_800/clear_sun.svg"
@@ -191,22 +179,22 @@
                   />
                   <% } else { %>
                   <img
-                    src="/images/weather_icons/clear_sky_800/clear_moon.svg"
+                    src="/images/weather_icons/clear_sky_800/clear_sun.svg"
                     alt="Clear sky during nighttime"
                   />
                   <% } } else if (days.weather[0].id >= 800 &&
-                  days.weather[0].id <= 899) { if (isTimeBetween7AMand6AM(new Date())) { %>
+                  days.weather[0].id <= 899) { if (isMorning) { %>
                   <img
                     src="/images/weather_icons/clouds_80x/cloud_sun.svg"
                     alt="Cloudy daytime"
                   />
                   <% } else { %>
                   <img
-                    src="/images/weather_icons/clouds_80x/cloud_moon.svg"
+                    src="/images/weather_icons/clouds_80x/cloud_sun.svg"
                     alt="Cloudy nighttime"
                   />
                   <% } } else if (days.weather[0].id >= 700 &&
-                  days.weather[0].id <= 799) { if (isTimeBetween7AMand6AM(new Date())) { %>
+                  days.weather[0].id <= 799) { if (isMorning) { %>
                   <img
                     src="/images/weather_icons/mist_7xx/mist.svg"
                     alt="Misty daytime"
@@ -250,7 +238,6 @@
           </div>
         </section>
       </div>
-    </section>
-    <%- include('background.ejs') %>  
+    </section> 
   </body>
 </html>

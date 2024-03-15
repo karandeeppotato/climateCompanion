@@ -10,17 +10,12 @@ body {
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background: linear-gradient(315deg, #e12e6c, #ce1277, #b70082, #9a008c, #760d94);
 }
 body::-webkit-scrollbar { 
   display: none;  
 }
-.morning {
-  background: linear-gradient(315deg, #0093E9 0%, #80D0C7 100%);
-}
 
-.night {
-  background: linear-gradient(315deg, #242324 20%, #4d4f50 100%);
-}
 /*----Glass Effect----*/
 .glass-effect-container {
   width: 100%;
@@ -276,7 +271,7 @@ body::-webkit-scrollbar {
 /*---media for bigger screens---*/
 @media screen and (max-width:3000px) and (min-height:1645px){
   body{
-    height: 100%;
+    height: auto;
   }
 }
 /*----media query for width 1650px just adjustment*/
