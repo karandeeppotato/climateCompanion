@@ -17,7 +17,6 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   try {
-
     const response_fr = await axios.get(
       API_URL_FORECAST + `&q=New%20Delhi,IN&appid=` + API_KEY
     );
