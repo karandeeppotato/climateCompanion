@@ -15,17 +15,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-var currentDate = new Date();
-
-function isTimeBetween7AMand6AM(currentTime) {
-  let currentHour = currentTime.getHours();
-  if(currentHour >= 6 && currentHour < 18) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 app.get("/", async (req, res) => {
   try {
 
@@ -54,7 +43,6 @@ app.get("/", async (req, res) => {
       currentWindSpeed: currData.wind.speed,
       currentSunrise: new Date((currData.sys.sunrise) * 1000).toLocaleString(),
       currentSunset: new Date((currData.sys.sunset) * 1000).toLocaleString(),
-      isBetween7to6: isTimeBetween7AMand6AM(currentDate),
 
       // TIMELINE AND FORECAST
       tl: forecast.list,
@@ -93,7 +81,6 @@ app.post("/search", async (req, res) => {
       currentWindSpeed: currData.wind.speed,
       currentSunrise: new Date((currData.sys.sunrise) * 1000).toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
       currentSunset: new Date((currData.sys.sunset) * 1000).toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-      isBetween7to6: isTimeBetween7AMand6AM(currentDate),
 
       // TIMELINE AND FORECAST
       tl: forecast.list,
