@@ -1,6 +1,7 @@
 <% 
         function isTimeBetween7AMand6AM(currentTime) {
           let currentHour = currentTime.getHours();
+          console.log(currentHour);
           if (currentHour >= 6 && currentHour < 18) {
             return true;
           } else {
