@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
-import expressIp from "express-ip";
 import 'dotenv/config';
 
 const app = express();
@@ -10,12 +9,11 @@ const API_URL_FORECAST =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric";
 const API_URL_CURRENT =
   "https://api.openweathermap.org/data/2.5/weather?units=metric";
-const API_KEY = process.env.API_KEY;
+const API_KEY = "0773f06d983e61482c094fb56f2cc21a"
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(expressIp().getIpInfoMiddleware);
 
 var currentDate = new Date();
 
@@ -30,21 +28,13 @@ function isTimeBetween7AMand6AM(currentTime) {
 
 app.get("/", async (req, res) => {
   try {
-    const latitude = req.ipInfo ? req.ipInfo.ll[0] : null;
-    const longitude = req.ipInfo ? req.ipInfo.ll[1] : null;
-
-    if (!latitude || !longitude) {
-      throw new Error("Unable to determine location from IP address.");
-    }
-
-    console.log("Latitude:", latitude, "Longitude:", longitude);
 
     const response_fr = await axios.get(
-      API_URL_FORECAST + `&lat=${latitude}&lon=${longitude}&appid=` + API_KEY
+      API_URL_FORECAST + `&q=New%20Delhi,IN&appid=` + API_KEY
     );
     const forecast = response_fr.data;
     const response_curr = await axios.get(
-      API_URL_CURRENT + `&lat=${latitude}&lon=${longitude}&appid=` + API_KEY
+      API_URL_CURRENT + `&q=New%20Delhi,IN&appid=` + API_KEY
     );
     const currData = response_curr.data;
 
